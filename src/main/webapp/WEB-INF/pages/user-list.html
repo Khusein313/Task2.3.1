@@ -1,0 +1,48 @@
+<!--
+<head = Определяет место, где помещается различная информация не отображаемая в теле документа. Здесь располагается тег названия документа и теги для поисковых машин.
+<body = Определяет видимую часть документа
+<div = Используется для группировки блочных элементов с целью форматирования стилями
+<h2 = создаёт заголовок 2го уровня
+<table = Создает таблицу
+<thead = Определяет заголовок таблицы
+<tr = Определяет строку в таблице.
+<th = Определяет заголовок таблицы (нормальная ячейка с отцентрованным жирным текстом)
+<tbody = Определяет тело таблицы.
+<tr = Определяет строку в таблице.
+<td = Определяет отдельную ячейку в таблице.
+<p = Создает новый параграф
+<a href="URL">ТЕКСТ</a>	= Создает гиперссылку на другие документы или часть текущего документа. Здесь URL адрес ссылки, ТЕКСТ - текст ссылки.
+ -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+
+<body>
+<h2>Users</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td><a th:href="@{/user-update/(id=${user.id})}">Edit</a></td>
+        <td><a th:href="@{/user-delete/(id=${user.id})}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<p><a href="/user-create">Create user</a></p>
+
+</body>
+</html>
