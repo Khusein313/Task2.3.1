@@ -4,8 +4,9 @@ package net.proselyte.service;
 import net.proselyte.dao.UserDao;
 import net.proselyte.model.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.util.List;
 
 @Service
@@ -19,13 +20,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public User findById(Long id) {
         return userDao.findById(id);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<User> findAll() {
         return userDao.findAll();
     }
